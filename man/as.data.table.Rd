@@ -23,13 +23,15 @@ as.data.table(x, keep.rownames=FALSE, \dots)
 
 \method{as.data.table}{data.table}(x, \dots)
 
+\method{as.data.table}{array}(x, keep.rownames=FALSE, na.rm=FALSE, \dots)
+
 is.data.table(x)
 
 }
 \arguments{
   \item{x}{An R object.}
   \item{keep.rownames}{Default is \code{FALSE}. If \code{TRUE}, adds the input object's names as a separate column named \code{"rn"}. \code{keep.rownames = "id"} names the column \code{"id"} instead.}
-  \item{na.rm}{Default \code{FALSE}, used in \emph{array} method. If \code{TRUE} it will remove \code{NA} values from results.}
+  \item{na.rm}{Default \code{FALSE}, used only in \emph{array} method. If \code{TRUE} it will remove \code{NA} values from results.}
   \item{\dots}{Additional arguments to be passed to or from other methods.}
 }
 \details{
