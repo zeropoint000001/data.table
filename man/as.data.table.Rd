@@ -1,5 +1,6 @@
 \name{as.data.table}
 \alias{as.data.table}
+\alias{as.data.table.array}
 \alias{as.data.table.matrix}
 \alias{as.data.table.list}
 \alias{as.data.table.data.frame}
@@ -28,6 +29,7 @@ is.data.table(x)
 \arguments{
   \item{x}{An R object.}
   \item{keep.rownames}{Default is \code{FALSE}. If \code{TRUE}, adds the input object's names as a separate column named \code{"rn"}. \code{keep.rownames = "id"} names the column \code{"id"} instead.}
+  \item{na.rm}{Default \code{FALSE}, used in \emph{array} method. If \code{TRUE} it will remove \code{NA} values from results.}
   \item{\dots}{Additional arguments to be passed to or from other methods.}
 }
 \details{

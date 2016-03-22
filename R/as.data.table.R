@@ -93,6 +93,26 @@ as.data.table.matrix <- function(x, keep.rownames=FALSE, ...) {
     alloc.col(value)
 }
 
+# as.data.table.array - #1418
+as.data.table.array <- function(x, keep.rownames = FALSE, na.rm=FALSE, ...) {
+    stopifnot(is.array(x), is.logical(na.rm)) # keep.rownames ignored here
+    d = dim(x)
+    if (length(d) <= 2L) stop("as.data.table.array should be called only for array object, not matrix, so expects to have 3+ dimensions")
+    dn = dimnames(x)
+    if (is.null(dn)) dn = lapply(d, seq.int)
+    r = do.call(CJ, c(dn, list(sorted=TRUE, unique=TRUE)))
+    dim.cols = copy(names(r))
+    if("value" %in% dim.cols) stop("Array to convert must not already have `value` character as dimension name. `value` name is reserved for a measure, rename dimname of input array.")
+    value = NULL # check NOTE
+    jj = as.call(list(
+        as.name(":="),
+        "value",
+        as.call(lapply(c("[","x", dim.cols), as.symbol)) # lookup to 'x' array for each row
+    )) # `:=`("value", x[V1, V2, V3])
+    r[, eval(jj), by=c(dim.cols)]
+    if(na.rm) r[!is.na(value)] else r[]
+}
+
 as.data.table.list <- function(x, keep.rownames=FALSE, ...) {
     if (!length(x)) return( null.data.table() )
     # fix for #833, as.data.table.list with matrix/data.frame/data.table as a list element..

@@ -73,6 +73,8 @@
   28. Joins (and binary search based subsets) using `on=` argument now reuses existing (secondary) indices, [#1439](https://github.com/Rdatatable/data.table/issues/1439). Thanks @jangorecki.
   
   29. New `split` method for data.table. Faster, more flexible and consistent with data.frame method. Closes [#1389](https://github.com/Rdatatable/data.table/issues/1389).
+  
+  30. New `array` method for as.data.table. Designed to shape array into multidimensional data in tabular structure. Closes [#1418](https://github.com/Rdatatable/data.table/issues/1418).
 
 #### BUG FIXES
 
