@@ -79,6 +79,8 @@
 
   37. Row subset operations of data.table is now parallelised with OpenMP, [#1660](https://github.com/Rdatatable/data.table/issues/1660). See the linked issue page for a rough benchmark on speedup.
 
+  38. Three new *Grouping Sets* functions: `rollup`, `cube` and `groupingsets`, [#1377](https://github.com/Rdatatable/data.table/issues/1377). Allows to aggregate data.table on various grouping levels at once producing sub-totals and grand total.
+
 #### BUG FIXES
 
   1. Now compiles and runs on IBM AIX gcc. Thanks to Vinh Nguyen for investigation and testing, [#1351](https://github.com/Rdatatable/data.table/issues/1351).
